@@ -34,8 +34,11 @@ class CustomObject():
         Args:
             filename (str): file to deserialize
         """
-        with open(filename, "rb") as f:
-            loaded_data = pickle.load(f)
+        try:
+            with open(filename, "rb") as f:
+                loaded_data = pickle.load(f)
+        except FileNotFoundError:
+            loaded_data = None
         return loaded_data
 
 
