@@ -18,7 +18,7 @@ def convert_csv_to_json(filename):
         return False
 
     with open('output.json', mode='w', encoding='utf-8') as jsonfile:
-        json.dump(data, jsonfile, indent=4)
+        json.dump(data, jsonfile)
     return True
 
 
