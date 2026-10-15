@@ -1,0 +1,56 @@
+#!/usr/bin/env python3
+"""Serialization
+"""
+import xml.etree.ElementTree as ET
+
+def serialize_to_xml(dictionary, filename):
+    """serialize
+    Args:
+        data (undefined): data to serialize
+        filename (str): file to create
+    """
+
+    root = ET.Element("data")
+    for item in dictionary:
+        item_ele = ET.SubElement(root, item)
+        item_ele.text = dictionary[item]
+    
+    new_tree = ET.ElementTree(root)
+    new_tree.write("data.xml", xml_declaration=True)
+    
+    
+def deserialize_from_xml(filename):
+    """deserialize
+
+    Args:
+        filename (str): file to deserialize
+    """
+    try:
+        tree = ET.parse('data.xml')
+        root = tree.getroot()
+
+        print(root.tag)
+        for child in root.iter('data'):
+            print(child.tag, child.attrib)
+    except FileNotFoundError:
+        root = None
+    return root
+
+
+def main():
+    sample_dict = {
+        'name': 'John',
+        'age': '28',
+        'city': 'New York'
+    }
+
+    xml_file = "data.xml"
+    serialize_to_xml(sample_dict, xml_file)
+    print(f"Dictionary serialized to {xml_file}")
+
+    deserialized_data = deserialize_from_xml(xml_file)
+    print("\nDeserialized Data:")
+    print(deserialized_data)
+
+if __name__ == "__main__":
+    main()
