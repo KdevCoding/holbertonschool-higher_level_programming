@@ -36,6 +36,7 @@ def deserialize_from_xml(filename):
 
 
 def main():
+    """test case"""
     sample_dict = {"name": "John", "age": "28", "city": "New York"}
 
     xml_file = "data.xml"
