@@ -11,12 +11,12 @@ def serialize_to_xml(dictionary, filename):
     """
 
     root = ET.Element("data")
-    for item in dictionary:
-        item_ele = ET.SubElement(root, item)
-        item_ele.text = dictionary[item]
+    for key, value in dictionary.items():
+        child = ET.SubElement(root, str(key))
+        child.text = "" if value is None else str(value)
 
     new_tree = ET.ElementTree(root)
-    new_tree.write(filename, xml_declaration=True)
+    new_tree.write(filename)
 
 
 def deserialize_from_xml(filename):
@@ -26,7 +26,7 @@ def deserialize_from_xml(filename):
         filename (str): file to deserialize
     """
     try:
-        tree = ET.parse("data.xml")
+        tree = ET.parse(filename)
         root = tree.getroot()
 
         flat_dict = {child.tag: child.text for child in root}
