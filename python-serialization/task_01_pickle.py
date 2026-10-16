@@ -15,7 +15,8 @@ class CustomObject:
         print(
             "Name: {}\nAge: {}\nIs Student: {}".format(
                 self.name, self.age, self.is_student
-            )
+            ),
+            end="",
         )
 
     def serialize(self, filename):
@@ -25,9 +26,11 @@ class CustomObject:
             data (undefined): data to serialize
             filename (str): file to create
         """
-
-        with open(filename, "wb") as f:
-            pickle.dump(self, f)
+        try:
+            with open(filename, "wb") as f:
+                pickle.dump(self, f)
+        except Exception:
+            return None
 
     @classmethod
     def deserialize(self, filename):
@@ -42,17 +45,3 @@ class CustomObject:
         except FileNotFoundError:
             loaded_data = None
         return loaded_data
-
-
-if __name__ == "__main__":
-    obj = CustomObject(name="John", age=25, is_student=True)
-    print("Original Object:")
-    obj.display()
-
-    # Serialize the object
-    obj.serialize("object.pkl")
-
-    # Deserialize the object into a new instance
-    new_obj = CustomObject.deserialize("object.pkl")
-    print("\nDeserialized Object:")
-    new_obj.display()
