@@ -1,6 +1,5 @@
 #!/usr/bin/env python3
-"""Serialization
-"""
+"""Serialization"""
 import pickle
 
 
@@ -12,7 +11,7 @@ def serialize_and_save_to_file(data, filename):
         filename (str): file to create
     """
 
-    with open(filename, 'wb') as f:
+    with open(filename, "wb") as f:
         pickle.dump(data, f)
 
 

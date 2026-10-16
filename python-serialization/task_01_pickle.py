@@ -1,20 +1,22 @@
 #!/usr/bin/env python3
-"""Serialization
-"""
+"""Serialization"""
 import pickle
 
 
-class CustomObject():
-    """customobject for task
-    """
+class CustomObject:
+    """customobject for task"""
+
     def __init__(self, name, age, is_student):
         self.name = name
         self.age = age
         self.is_student = is_student
 
     def display(self):
-        print("Name: {}\nAge: {}\nIs Student: {}".format
-              (self.name, self.age, self.is_student))
+        print(
+            "Name: {}\nAge: {}\nIs Student: {}".format(
+                self.name, self.age, self.is_student
+            )
+        )
 
     def serialize(self, filename):
         """serialize
@@ -24,7 +26,7 @@ class CustomObject():
             filename (str): file to create
         """
 
-        with open(filename, 'wb') as f:
+        with open(filename, "wb") as f:
             pickle.dump(self, f)
 
     @classmethod

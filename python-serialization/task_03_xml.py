@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
-"""Serialization
-"""
+"""Serialization"""
 import xml.etree.ElementTree as ET
+
 
 def serialize_to_xml(dictionary, filename):
     """serialize
@@ -14,11 +14,11 @@ def serialize_to_xml(dictionary, filename):
     for item in dictionary:
         item_ele = ET.SubElement(root, item)
         item_ele.text = dictionary[item]
-    
+
     new_tree = ET.ElementTree(root)
     new_tree.write("data.xml", xml_declaration=True)
-    
-    
+
+
 def deserialize_from_xml(filename):
     """deserialize
 
@@ -26,23 +26,17 @@ def deserialize_from_xml(filename):
         filename (str): file to deserialize
     """
     try:
-        tree = ET.parse('data.xml')
+        tree = ET.parse("data.xml")
         root = tree.getroot()
 
-        print(root.tag)
-        for child in root.iter('data'):
-            print(child.tag, child.attrib)
+        flat_dict = {child.tag: child.text for child in root}
     except FileNotFoundError:
-        root = None
-    return root
+        flat_dict = None
+    return flat_dict
 
 
 def main():
-    sample_dict = {
-        'name': 'John',
-        'age': '28',
-        'city': 'New York'
-    }
+    sample_dict = {"name": "John", "age": "28", "city": "New York"}
 
     xml_file = "data.xml"
     serialize_to_xml(sample_dict, xml_file)
@@ -51,6 +45,7 @@ def main():
     deserialized_data = deserialize_from_xml(xml_file)
     print("\nDeserialized Data:")
     print(deserialized_data)
+
 
 if __name__ == "__main__":
     main()
