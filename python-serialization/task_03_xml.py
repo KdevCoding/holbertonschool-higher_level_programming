@@ -33,20 +33,3 @@ def deserialize_from_xml(filename):
     except FileNotFoundError:
         flat_dict = None
     return flat_dict
-
-
-def main():
-    """test case"""
-    sample_dict = {"name": "John", "age": "28", "city": "New York"}
-
-    xml_file = "data.xml"
-    serialize_to_xml(sample_dict, xml_file)
-    print(f"Dictionary serialized to {xml_file}")
-
-    deserialized_data = deserialize_from_xml(xml_file)
-    print("\nDeserialized Data:")
-    print(deserialized_data)
-
-
-if __name__ == "__main__":
-    main()
