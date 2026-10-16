@@ -12,11 +12,11 @@ class CustomObject:
         self.is_student = is_student
 
     def display(self):
+        """display self values"""
         print(
             "Name: {}\nAge: {}\nIs Student: {}".format(
                 self.name, self.age, self.is_student
-            ),
-            end="",
+            )
         )
 
     def serialize(self, filename):
@@ -42,6 +42,8 @@ class CustomObject:
         try:
             with open(filename, "rb") as f:
                 loaded_data = pickle.load(f)
-        except FileNotFoundError:
+        except Exception:
             loaded_data = None
+        if not isinstance(loaded_data, self):
+            return None
         return loaded_data

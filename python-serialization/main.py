@@ -1,18 +1,15 @@
 #!/usr/bin/env python3
-from task_03_xml import serialize_to_xml, deserialize_from_xml
+from task_01_pickle import CustomObject
 
+# Create an instance of CustomObject
+obj = CustomObject(name="John", age=25, is_student=True)
+print("Original Object:")
+obj.display()
 
-def main():
-    sample_dict = {"name": "John", "age": "28", "city": "New York"}
+# Serialize the object
+obj.serialize("object.pkl")
 
-    xml_file = "data.xml"
-    serialize_to_xml(sample_dict, xml_file)
-    print(f"Dictionary serialized to {xml_file}")
-
-    deserialized_data = deserialize_from_xml(xml_file)
-    print("\nDeserialized Data:")
-    print(deserialized_data)
-
-
-if __name__ == "__main__":
-    main()
+# Deserialize the object into a new instance
+new_obj = CustomObject.deserialize("object.pkl")
+print("\nDeserialized Object:")
+new_obj.display()
