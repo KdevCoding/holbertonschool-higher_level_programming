@@ -16,7 +16,7 @@ def serialize_to_xml(dictionary, filename):
         item_ele.text = dictionary[item]
 
     new_tree = ET.ElementTree(root)
-    new_tree.write("data.xml", xml_declaration=True)
+    new_tree.write(filename, xml_declaration=True)
 
 
 def deserialize_from_xml(filename):
