@@ -1,29 +1,18 @@
-#!/usr/bin/env python3
-"""Serialization"""
-import pickle
+#!/usr/bin/python3
+"""serialization"""
+import json
 
 
 def serialize_and_save_to_file(data, filename):
-    """serialize
+    """Serialize a dictionary to JSON and save it to filename
 
-    Args:
-        data (undefined): data to serialize
-        filename (str): file to create
+    An existing file is replaced
     """
-
-    with open(filename, "wb") as f:
-        pickle.dump(data, f)
+    with open(filename, "w") as f:
+        json.dump(data, f)
 
 
 def load_and_deserialize(filename):
-    """deserialize
-
-    Args:
-        filename (str): file to deserialize
-    """
-    try:
-        with open(filename, "rb") as f:
-            loaded_data = pickle.load(f)
-    except Exception:
-        return None
-    return loaded_data
+    """Load a JSON file and return the deserialized dictionary"""
+    with open(filename, "r") as f:
+        return json.load(f)
