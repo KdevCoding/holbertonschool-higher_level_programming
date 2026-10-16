@@ -21,6 +21,9 @@ def load_and_deserialize(filename):
     Args:
         filename (str): file to deserialize
     """
-    with open(filename, "rb") as f:
-        loaded_data = pickle.load(f)
+    try:
+        with open(filename, "rb") as f:
+            loaded_data = pickle.load(f)
+    except Exception:
+        return None
     return loaded_data
