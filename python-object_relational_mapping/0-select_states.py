@@ -1,10 +1,10 @@
 #!/usr/bin/python3
+"""querry of states
+"""
 import MySQLdb
 import sys
 
 if __name__ == "__main__":
-    """querry of states
-    """
     conn = MySQLdb.connect(
                             host="localhost",
                             port=3306,
