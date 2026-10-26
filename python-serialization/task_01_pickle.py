@@ -1,20 +1,23 @@
 #!/usr/bin/env python3
-"""Serialization
-"""
+"""Serialization"""
 import pickle
 
 
-class CustomObject():
-    """customobject for task
-    """
+class CustomObject:
+    """customobject for task"""
+
     def __init__(self, name, age, is_student):
         self.name = name
         self.age = age
         self.is_student = is_student
 
     def display(self):
-        print("Name: {}\nAge: {}\nIs Student: {}".format
-              (self.name, self.age, self.is_student))
+        """display self values"""
+        print(
+            "Name: {}\nAge: {}\nIs Student: {}".format(
+                self.name, self.age, self.is_student
+            )
+        )
 
     def serialize(self, filename):
         """serialize
@@ -23,9 +26,11 @@ class CustomObject():
             data (undefined): data to serialize
             filename (str): file to create
         """
-
-        with open(filename, 'wb') as f:
-            pickle.dump(self, f)
+        try:
+            with open(filename, "wb") as f:
+                pickle.dump(self, f)
+        except Exception:
+            return None
 
     @classmethod
     def deserialize(self, filename):
@@ -37,20 +42,8 @@ class CustomObject():
         try:
             with open(filename, "rb") as f:
                 loaded_data = pickle.load(f)
-        except FileNotFoundError:
+        except Exception:
             loaded_data = None
+        if not isinstance(loaded_data, self):
+            return None
         return loaded_data
-
-
-if __name__ == "__main__":
-    obj = CustomObject(name="John", age=25, is_student=True)
-    print("Original Object:")
-    obj.display()
-
-    # Serialize the object
-    obj.serialize("object.pkl")
-
-    # Deserialize the object into a new instance
-    new_obj = CustomObject.deserialize("object.pkl")
-    print("\nDeserialized Object:")
-    new_obj.display()
