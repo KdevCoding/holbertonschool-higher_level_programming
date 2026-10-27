@@ -15,12 +15,12 @@ if __name__ == "__main__":
     )
     cur = conn.cursor()
     cur.execute(
-        "SELECT * FROM states",
-        "Left Join cities ON cities.state_id = states.id",
-        "WHERE = BINARY = %s ",
+        "SELECT * FROM states "
+        "Left Join cities ON cities.state_id = states.id "
+        "WHERE cities.name = BINARY %s "
         "ORDER BY cities.id ASC", (sys.argv[4],)
     )
     for row in cur.fetchall():
-        print(row[0], sep=',',end='')
+        print(row[0], sep=',', end='')
     cur.close()
     conn.close()
