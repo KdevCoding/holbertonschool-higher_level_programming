@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""querry of states filtered for starting with N
+"""query of states filtered for state input
 """
 import MySQLdb
 import sys
