@@ -14,7 +14,9 @@ if __name__ == "__main__":
     )
     cur = conn.cursor()
     cur.execute(
-        "SELECT * FROM states Left Join cities ON cities.state_id = states.id WHERE LIKE BINARY = %s "
+        "SELECT * FROM states",
+        "Left Join cities ON cities.state_id = states.id",
+        "WHERE LIKE BINARY = %s ",
         "ORDER BY id ASC", (sys.argv[4],)
     )
     for row in cur.fetchall():
