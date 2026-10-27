@@ -17,7 +17,7 @@ if __name__ == "__main__":
         "SELECT * FROM states",
         "Left Join cities ON cities.state_id = states.id",
         "WHERE LIKE BINARY = %s ",
-        "ORDER BY id ASC", (sys.argv[4],)
+        "ORDER BY cities.id ASC", (sys.argv[4],)
     )
     for row in cur.fetchall():
         print(row)
