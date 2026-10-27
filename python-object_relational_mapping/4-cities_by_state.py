@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""state query filter  by input sqlinjection protection
+"""state query filter by input sqlinjection protection l join cities
 """
 import MySQLdb
 import sys
