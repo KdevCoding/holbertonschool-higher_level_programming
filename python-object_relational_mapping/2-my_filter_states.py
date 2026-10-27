@@ -13,7 +13,7 @@ if __name__ == "__main__":
     )
     cur = conn.cursor()
     cur.execute(
-        "SELECT * FROM states WHERE name LIKE BINARY '{}' ".format(sys.argv[4])
+        "SELECT * FROM states WHERE name = BINARY '{}' ".format(sys.argv[4])
     )
     for row in cur.fetchall():
         print(row)
