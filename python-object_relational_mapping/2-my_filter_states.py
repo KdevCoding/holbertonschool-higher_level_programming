@@ -1,6 +1,6 @@
 #!/usr/bin/python3
-"""query of states filtered for state input
-"""
+"""Displays all values in the states table of hbtn_0e_0_usa
+where name matches the argument."""
 import MySQLdb
 import sys
 
@@ -13,10 +13,11 @@ if __name__ == "__main__":
                             db=sys.argv[3]
                         )
     cur = conn.cursor()
-    cur.execute("SELECT * FROM states ORDER BY id ASC")
-    query_rows = cur.fetchall()
-    for row in query_rows:
-        if row[1] == sys.argv[4]:
-            print("{}".format(row))
+    cur.execute(
+        "SELECT * FROM states WHERE name LIKE BINARY '{}' "
+        "ORDER BY id ASC".format(sys.argv[4])
+    )
+    for row in cur.fetchall():
+        print(row)
     cur.close()
     conn.close()
