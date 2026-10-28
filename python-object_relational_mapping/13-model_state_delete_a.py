@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""print states from States table
+"""delete states containing a
 """
 from sqlalchemy.orm import Session
 import sys
