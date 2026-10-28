@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""Checks every Python file in a folder against the project requirements."""
+"""Checks every Python file in a folder against the project requirements"""
 import ast
 import os
 import subprocess
@@ -11,7 +11,7 @@ MIN_DOC_CHARS = 15
 
 
 def check_doc(node, label, problems):
-    """Adds a problem when a node has a missing or too short docstring."""
+    """Adds a problem when a node has a missing or too short docstring"""
     doc = ast.get_docstring(node)
     if not doc:
         problems.append("{} has no documentation".format(label))
@@ -73,7 +73,7 @@ def check_file(path):
 
 
 def main():
-    """Checks all .py files in the given folder and prints a summary."""
+    """Checks all .py files in the given folder and prints a summary"""
     folder = sys.argv[1] if len(sys.argv) > 1 else "."
     failed = {}
 
