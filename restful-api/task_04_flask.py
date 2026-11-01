@@ -1,4 +1,4 @@
-from flask import Flask, jsonify, abort, request
+from flask import Flask, jsonify, request
 
 app = Flask(__name__)
 users = {}
@@ -25,7 +25,7 @@ def display_user(username):
     if username in users:
         return jsonify(users[username])
     else:
-        abort(404, description='{"error": "User not found"}')
+        return jsonify({"error": "User not found"}), 404
 
 
 @app.route('/add_user', methods=["POST"])
