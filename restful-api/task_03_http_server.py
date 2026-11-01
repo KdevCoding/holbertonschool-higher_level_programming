@@ -22,7 +22,7 @@ class SimpleAPIHandler(BaseHTTPRequestHandler):
         elif self.path == "/status":
             self._send(200, "OK")
         else:
-            self._send(404, "404 Not Found: requested endpoint does not exist")
+            self._send(404, "404 Not Found - Endpoint not found")
 
 
 if __name__ == "__main__":
