@@ -6,7 +6,6 @@ if (argv.length < 4) {
   console.log(0);
 } else {
   argv.forEach((val) => {
-    console.log(val);
     if (Number(val) > first) {
       second = first;
       first = val;
