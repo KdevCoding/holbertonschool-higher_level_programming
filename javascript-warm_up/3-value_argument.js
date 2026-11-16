@@ -1,3 +1,4 @@
+#!/usr/bin/node
 const [first] = process.argv.slice(2);
 
 if (first === undefined) {
